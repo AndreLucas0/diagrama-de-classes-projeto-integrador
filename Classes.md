@@ -101,3 +101,85 @@ classDiagram
         +Update (id: long, phone: Phone): void
     }
 ```
+
+```mermaid
+classDiagram
+    class Step {
+        -Id: long
+        -Name: string
+        -StartDate: DateTime
+        -EndDate: DateTime
+        -Finished: boolean
+        +Step (name: string, startDate: DateTime, endDate: DateTime, finished: boolean)
+        +GetId (): long
+        +SetId (id: long): void
+        +GetName (): string
+        +SetName (name: string): void
+        +GetStartDate (): DateTime
+        +SetStartDate (startDate: DateTime): void
+        +GetEndDate (): DateTime
+        +SetEndDate (endDate: DateTime): void
+        +IsFinished (): boolean
+        +SetFinished (finished: boolean): void
+        +GetAll (): List<Step>
+        +GetById (id: long): Step
+        +Save (step: Step): Step
+        +DeleteById (id: long): void
+        +Update (id: long, step: Step): void
+    }
+```
+
+```mermaid
+classDiagram
+    class Dealership {
+        -Id: long
+        -Name: string
+        -Street: string
+        -Number: int
+        -City: string
+        -FederativeUnit: string
+        -Cnpj: string
+        -Dealership (name: string, street: string, number: int, city: string, federativeUnit: string): Dealership
+        +GetStreet (): string
+        +SetStreet (address: string): void
+        +GetNumber (): int
+        +SetNumber (number: int): void
+        +GetCity (): string
+        +SetCity (city: string): void
+        +GetFederativeUnit (): string
+        +SetFederativeUnit (federativeUnite: string): void
+        +GetAll (): List<Dealership>
+        +GetById (id: long): Dealership
+        +Save (dealership: Dealership): Dealership
+        +DeleteById (id: long): void
+        +Update (id: long, dealership: Dealership): void
+    }
+```
+
+```mermaid
+classDiagram
+    class Order {
+        -Id: long
+        -Client: Client
+        -Step: Step
+        -Dealership: Dealership
+        -Seller: Seller
+        +Order (client: Client, step: Step, dealership: Dealership, seller: Seller): Order
+        +GetId (): long
+        +SetId (id: long): void
+        +GetClient (): Client
+        +SetClient (client: Client): void
+        +GetStep (): Step
+        +SetStep (step: Step): void
+        +GetDealership (): Dealership
+        +SetDealership (dealership: Dealership): void
+        +GetSeller (): Seller
+        +SetSeller (seller: Seller): void
+        +GetAll (): List<Order>
+        +GetAllByUserId (id: long) List<Order>
+        +GetById (id: long): Order
+        +Save (order: Order): Order
+        +DeleteById (id: long): void
+        +Update (id: long, order: Order): void
+    }
+```
