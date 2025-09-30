@@ -5,7 +5,7 @@ classDiagram
         -Phone: Phone
         -Email: Email
         -Address: Address
-        +Client (phone: Phone, email: Email, address: Address): Client
+        +Client (phoneId: long, emailId: long, addressId: long): Client
         +GetAll (): List&lt;Client&gt;
         +GetById (id: long): Client
         +Save (client: Client): Client
@@ -124,7 +124,7 @@ classDiagram
         -Name: string
         -Email: string
         -Cpf: string
-        +Seller (dealership: Dealership, name: string, email: string, cpf: string): Seller
+        +Seller (dealershipId: long, name: string, email: string, cpf: string): Seller
         +GetAll (): List&lt;Seller&gt;
         +GetAllByDealershipId (id: long): List&lt;Seller&gt; 
         +GetById (id: long): Seller
@@ -142,7 +142,7 @@ classDiagram
         -Finished: boolean
         -TotalValue: double
         -Discount: double
-        +Payment (order: Order, finished: boolean, totalValue: double, discount: double): Payment
+        +Payment (orderId: long, finished: boolean, totalValue: double, discount: double): Payment
         +GetAll (): List&lt;Payment&gt;
         +GetById (id: long): Payment
         +Save (payment: Payment): Payment
@@ -157,7 +157,7 @@ classDiagram
         -Id: long
         -Order: Order
         -Date: DateTime
-        +Contract(order: Order, date: DateTime): Contract
+        +Contract(orderId: long, date: DateTime): Contract
         +GetAll (): List&lt;Contract&gt;
         +GetById (id: long): Contract
         +Save (contract: Contract): Contract
@@ -177,7 +177,7 @@ classDiagram
         -Term: DateTime
         -Discount: double
         -TotalValue: double
-        +Financing (order: Order, bank: Bank, finished: boolean, value: double, term: DateTime, discount: double, totalValue: double): Financing
+        +Financing (orderId: long, bankId: long, finished: boolean, value: double, term: DateTime, discount: double, totalValue: double): Financing
         +GetAll (): List&lt;Financing&gt;
         +GetById (id: long): Financing
         +Save (financing: Financing): Financing
@@ -217,7 +217,7 @@ classDiagram
         -Available: boolean
         -Chassis: string
         -Accessories: List&lt;Accessory&gt;
-        +Vehicle (order: Order, model: Model, color: string, year: DateTime, available: booelan, chassis: string, accessories: List&lt;Accessory&gt;): Vehicle
+        +Vehicle (orderId: long, modelId: long, color: string, year: DateTime, available: booelan, chassis: string, accessorieIds: List&lt;long&gt;): Vehicle
         +GetAll (): List&lt;Vehicle&gt;
         +GetById (id: long): Vehicle
         +Save (vehicle: Vehicle): Vehicle
@@ -236,7 +236,7 @@ classDiagram
         -Type: string
         -Price: double
         -Accessories: List&lt;Accessory&gt;
-        +Model (technicalSheet: string, power: string, version: string, type: string, price: double, accessories: List&lt;Accessory&gt;): Model
+        +Model (technicalSheet: string, power: string, version: string, type: string, price: double, accessorieIds: List&lt;long&gt;): Model
         +GetAll (): List&lt;Model&gt;
         +GetById (id: long): Model
         +Save (model: Model): Model
@@ -252,7 +252,7 @@ classDiagram
         -Id: long
         -Name: string
         -Price: double
-        + Accessory (name: string, price: double): Accessory
+        +Accessory (name: string, price: double): Accessory
         +GetAll (): List&lt;Accessory&gt;
         +GetById (id: long): Accessory
         +Save (accessory: Accessory): Accessory
@@ -269,7 +269,7 @@ classDiagram
         -Steps: List&lt;Step&gt;
         -Dealership: Dealership
         -Seller: Seller
-        +Order (client: Client, step: Step, dealership: Dealership, seller: Seller): Order
+        +Order (client: Client, stepIds: List&lt;long&gt;, dealership: Dealership, seller: Seller): Order
         +GetAll (): List&lt;Order&gt;
         +GetAllByUserId (id: long) List&lt;Order&gt;
         +GetById (id: long): Order
