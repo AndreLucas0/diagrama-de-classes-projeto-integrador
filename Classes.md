@@ -278,3 +278,29 @@ classDiagram
         +Update (id: long, order: Order): void
     }
 ```
+
+```mermaid
+classDiagram
+    class Step {
+        -Name: string
+        -StartDate: DateTime
+        -EndDate: DateTime
+        -Finished: boolean
+        +Step (name: string, startDate: DateTime, endDate: DateTime, finished: boolean)
+    }
+```
+
+```mermaid
+classDiagram
+    class Timeline {
+        -Id: long
+        -Steps: List&lt;Step&gt;
+        +Timeline (List&lt;Step&gt: List&lt;Step&gt)
+        +GetAll (): List&lt;Step&gt;
+        +GetCurrentStep () Step;
+        +GetById (id: long): Timeline
+        +Save (timeline: Timeline): Timeline
+        +DeleteById (id: long): void
+        +Update (id: long, timeline: Timeline): void
+    }
+```
