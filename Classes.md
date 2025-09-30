@@ -6,7 +6,7 @@ classDiagram
         -Email: Email
         -Address: Address
         +Client (phone: Phone, email: Email, address: Address): Client
-        +GetAll (): List<Client>
+        +GetAll (): List&lt;Client&gt;
         +GetById (id: long): Client
         +Save (client: Client): Client
         +DeleteById (id: long): void
@@ -38,8 +38,8 @@ classDiagram
         -Id: long
         -EmailAddress: string
         -Email (emailAddress: string): Email
-        +GetAll (): List<Email>
-        +GetAllByUserId (id: long) List<Email>
+        +GetAll (): List&lt;Email&gt;
+        +GetAllByUserId (id: long) List&lt;Email&gt;
         +GetById (id: long): Email
         +Save (email: Email): Email
         +DeleteById (id: long): void
@@ -56,8 +56,8 @@ classDiagram
         -City: string
         -FederativeUnit: string
         -Address (street: string, number: int, city: string, federativeUnit: string): Address
-        +GetAll (): List<Address>
-        +GetAllByUserId (id: long) List<Address>
+        +GetAll (): List&lt;Address&gt;
+        +GetAllByUserId (id: long) List&lt;Address&gt;
         +GetById (id: long): Address
         +Save (address: Address): Address
         +DeleteById (id: long): void
@@ -71,8 +71,8 @@ classDiagram
         -Id: long
         -PhoneNumber: string
         -Phone (phoneNumber: string): Phone
-        +GetAll (): List<Phone>
-        +GetAllByUserId (id: long) List<Phone>
+        +GetAll (): List&lt;Phone&gt;
+        +GetAllByUserId (id: long) List&lt;Phone&gt;
         +GetById (id: long): Phone
         +Save (phone: Phone): Phone
         +DeleteById (id: long): void
@@ -89,7 +89,7 @@ classDiagram
         -EndDate: DateTime
         -Finished: boolean
         +Step (name: string, startDate: DateTime, endDate: DateTime, finished: boolean)
-        +GetAll (): List<Step>
+        +GetAll (): List&lt;Step&gt;
         +GetById (id: long): Step
         +Save (step: Step): Step
         +DeleteById (id: long): void
@@ -108,7 +108,7 @@ classDiagram
         -FederativeUnit: string
         -Cnpj: string
         +Dealership (name: string, street: string, number: int, city: string, federativeUnit: string): Dealership
-        +GetAll (): List<Dealership>
+        +GetAll (): List&lt;Dealership&gt;
         +GetById (id: long): Dealership
         +Save (dealership: Dealership): Dealership
         +DeleteById (id: long): void
@@ -125,8 +125,8 @@ classDiagram
         -Email: string
         -Cpf: string
         +Seller (dealership: Dealership, name: string, email: string, cpf: string): Seller
-        +GetAll (): List<Seller>
-        +GetAllByDealershipId (id: long): List<Seller> 
+        +GetAll (): List&lt;Seller&gt;
+        +GetAllByDealershipId (id: long): List&lt;Seller&gt; 
         +GetById (id: long): Seller
         +Save (seller: Seller): Seller
         +DeleteById (id: long): void
@@ -143,7 +143,7 @@ classDiagram
         -TotalValue: double
         -Discount: double
         +Payment (order: Order, finished: boolean, totalValue: double, discount: double): Payment
-        +GetAll (): List<Payment>
+        +GetAll (): List&lt;Payment&gt;
         +GetById (id: long): Payment
         +Save (payment: Payment): Payment
         +DeleteById (id: long): void
@@ -158,7 +158,7 @@ classDiagram
         -Order: Order
         -Date: DateTime
         +Contract(order: Order, date: DateTime): Contract
-        +GetAll (): List<Contract>
+        +GetAll (): List&lt;Contract&gt;
         +GetById (id: long): Contract
         +Save (contract: Contract): Contract
         +DeleteById (id: long): void
@@ -178,7 +178,7 @@ classDiagram
         -Discount: double
         -TotalValue: double
         +Financing (order: Order, bank: Bank, finished: boolean, value: double, term: DateTime, discount: double, totalValue: double): Financing
-        +GetAll (): List<Financing>
+        +GetAll (): List&lt;Financing&gt;
         +GetById (id: long): Financing
         +Save (financing: Financing): Financing
         +DeleteById (id: long): void
@@ -198,7 +198,7 @@ classDiagram
         -FederativeUnit: string
         -Cnpj: string
         +Bank (businessName: string, email: string, street: string, number: int, city: string, federativeUnit: string, cnpj: string): Bank
-        +GetAll (): List<Bank>
+        +GetAll (): List&lt;Bank&gt;
         +GetById (id: long): Bank
         +Save (bank: Bank): Bank
         +DeleteById (id: long): void
@@ -216,9 +216,9 @@ classDiagram
         -Year: DateTime
         -Available: boolean
         -Chassis: string
-        -Accessories: List<Accessory>
-        +Vehicle (order: Order, model: Model, color: string, year: DateTime, available: booelan, chassis: string, accessories: List<Accessory>): Vehicle
-        +GetAll (): List<Vehicle>
+        -Accessories: List&lt;Accessory&gt;
+        +Vehicle (order: Order, model: Model, color: string, year: DateTime, available: booelan, chassis: string, accessories: List&lt;Accessory&gt;): Vehicle
+        +GetAll (): List&lt;Vehicle&gt;
         +GetById (id: long): Vehicle
         +Save (vehicle: Vehicle): Vehicle
         +DeleteById (id: long): void
@@ -235,9 +235,9 @@ classDiagram
         -Version: string
         -Type: string
         -Price: double
-        -Accessories: List<Accessory>
-        +Model (technicalSheet: string, power: string, version: string, type: string, price: double, accessories: List<Accessory>): Model
-        +GetAll (): List<Model>
+        -Accessories: List&lt;Accessory&gt;
+        +Model (technicalSheet: string, power: string, version: string, type: string, price: double, accessories: List&lt;Accessory&gt;): Model
+        +GetAll (): List&lt;Model&gt;
         +GetById (id: long): Model
         +Save (model: Model): Model
         +DeleteById (id: long): void
@@ -253,7 +253,7 @@ classDiagram
         -Name: string
         -Price: double
         + Accessory (name: string, price: double): Accessory
-        +GetAll (): List<Accessory>
+        +GetAll (): List&lt;Accessory&gt;
         +GetById (id: long): Accessory
         +Save (accessory: Accessory): Accessory
         +DeleteById (id: long): void
@@ -266,12 +266,12 @@ classDiagram
     class Order {
         -Id: long
         -Client: Client
-        -Steps: List<Step>
+        -Steps: List&lt;Step&gt;
         -Dealership: Dealership
         -Seller: Seller
         +Order (client: Client, step: Step, dealership: Dealership, seller: Seller): Order
-        +GetAll (): List<Order>
-        +GetAllByUserId (id: long) List<Order>
+        +GetAll (): List&lt;Order&gt;
+        +GetAllByUserId (id: long) List&lt;Order&gt;
         +GetById (id: long): Order
         +Save (order: Order): Order
         +DeleteById (id: long): void
