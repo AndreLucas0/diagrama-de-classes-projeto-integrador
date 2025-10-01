@@ -5,6 +5,8 @@ classDiagram
         -Phone: Phone
         -Email: Email
         -Address: Address
+        -CreatedAt: LocalDateTime
+        -UpdatedAt: LocalDateTime
         +Client (phoneId: long, emailId: long, addressId: long): Client
         +GetAll (): List&lt;Client&gt;
         +GetById (id: long): Client
@@ -88,6 +90,8 @@ classDiagram
         -StartDate: DateTime
         -EndDate: DateTime
         -Finished: boolean
+        -CreatedAt: LocalDateTime
+        -UpdatedAt: LocalDateTime
         +Step (name: string, startDate: DateTime, endDate: DateTime, finished: boolean)
         +GetAll (): List&lt;Step&gt;
         +GetById (id: long): Step
@@ -107,6 +111,8 @@ classDiagram
         -City: string
         -FederativeUnit: string
         -Cnpj: string
+        -CreatedAt: LocalDateTime
+        -UpdatedAt: LocalDateTime
         +Dealership (name: string, street: string, number: int, city: string, federativeUnit: string): Dealership
         +GetAll (): List&lt;Dealership&gt;
         +GetById (id: long): Dealership
@@ -124,6 +130,8 @@ classDiagram
         -Name: string
         -Email: string
         -Cpf: string
+        -CreatedAt: LocalDateTime
+        -UpdatedAt: LocalDateTime
         +Seller (dealershipId: long, name: string, email: string, cpf: string): Seller
         +GetAll (): List&lt;Seller&gt;
         +GetAllByDealershipId (id: long): List&lt;Seller&gt; 
@@ -142,6 +150,8 @@ classDiagram
         -Finished: boolean
         -TotalValue: double
         -Discount: double
+        -CreatedAt: LocalDateTime
+        -UpdatedAt: LocalDateTime
         +Payment (orderId: long, finished: boolean, totalValue: double, discount: double): Payment
         +GetAll (): List&lt;Payment&gt;
         +GetById (id: long): Payment
@@ -157,6 +167,8 @@ classDiagram
         -Id: long
         -Order: Order
         -Date: DateTime
+        -CreatedAt: LocalDateTime
+        -UpdatedAt: LocalDateTime
         +Contract(orderId: long, date: DateTime): Contract
         +GetAll (): List&lt;Contract&gt;
         +GetById (id: long): Contract
@@ -177,6 +189,8 @@ classDiagram
         -Term: DateTime
         -Discount: double
         -TotalValue: double
+        -CreatedAt: LocalDateTime
+        -UpdatedAt: LocalDateTime
         +Financing (orderId: long, bankId: long, finished: boolean, value: double, term: DateTime, discount: double, totalValue: double): Financing
         +GetAll (): List&lt;Financing&gt;
         +GetById (id: long): Financing
@@ -197,6 +211,8 @@ classDiagram
         -City: string
         -FederativeUnit: string
         -Cnpj: string
+        -CreatedAt: LocalDateTime
+        -UpdatedAt: LocalDateTime
         +Bank (businessName: string, email: string, street: string, number: int, city: string, federativeUnit: string, cnpj: string): Bank
         +GetAll (): List&lt;Bank&gt;
         +GetById (id: long): Bank
@@ -217,6 +233,8 @@ classDiagram
         -Available: boolean
         -Chassis: string
         -Accessories: List&lt;Accessory&gt;
+        -CreatedAt: LocalDateTime
+        -UpdatedAt: LocalDateTime
         +Vehicle (orderId: long, modelId: long, color: string, year: DateTime, available: booelan, chassis: string, accessorieIds: List&lt;long&gt;): Vehicle
         +GetAll (): List&lt;Vehicle&gt;
         +GetById (id: long): Vehicle
@@ -236,6 +254,8 @@ classDiagram
         -Type: string
         -Price: double
         -Accessories: List&lt;Accessory&gt;
+        -CreatedAt: LocalDateTime
+        -UpdatedAt: LocalDateTime
         +Model (technicalSheet: string, power: string, version: string, type: string, price: double, accessorieIds: List&lt;long&gt;): Model
         +GetAll (): List&lt;Model&gt;
         +GetById (id: long): Model
@@ -252,6 +272,8 @@ classDiagram
         -Id: long
         -Name: string
         -Price: double
+        -CreatedAt: LocalDateTime
+        -UpdatedAt: LocalDateTime
         +Accessory (name: string, price: double): Accessory
         +GetAll (): List&lt;Accessory&gt;
         +GetById (id: long): Accessory
@@ -266,15 +288,34 @@ classDiagram
     class Order {
         -Id: long
         -Client: Client
-        -Steps: List&lt;Step&gt;
+        -Timeline: Timeline;
         -Dealership: Dealership
         -Seller: Seller
-        +Order (client: Client, stepIds: List&lt;long&gt;, dealership: Dealership, seller: Seller): Order
+        -CreatedAt: LocalDateTime
+        -UpdatedAt: LocalDateTime
+        +Order (clientId: long, timelineId: long, dealershipId: lon, sellerId: long): Order
         +GetAll (): List&lt;Order&gt;
         +GetAllByUserId (id: long) List&lt;Order&gt;
         +GetById (id: long): Order
         +Save (order: Order): Order
         +DeleteById (id: long): void
         +Update (id: long, order: Order): void
+    }
+```
+
+```mermaid
+classDiagram
+    class Timeline {
+        -Id: long
+        -Steps: List&lt;Step&gt;
+        -CreatedAt: LocalDateTime
+        -UpdatedAt: LocalDateTime
+        +Timeline (stepIds: List&lt;long&gt)
+        +GetAll (): List&lt;Timeline&gt;
+        +GetCurrentStep () Step;
+        +GetById (id: long): Timeline
+        +Save (timeline: Timeline): Timeline
+        +DeleteById (id: long): void
+        +Update (id: long, timeline: Timeline): void
     }
 ```
